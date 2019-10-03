@@ -37,4 +37,7 @@ public class Lesson {
 
     @Column(name = "start_time")
     private LocalDateTime startTime;
+
+    @Column(name = "cabinet")
+    private String cabinet;
 }
