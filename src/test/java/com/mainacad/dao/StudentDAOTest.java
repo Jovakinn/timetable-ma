@@ -52,8 +52,8 @@ class StudentDAOTest {
         failedGroup.setName("failed_group");
         failedGroup.setSpecialization(savedSpecialization);
 
-        failedGroup = groupDAO.saveAndFlush(failedGroup);
-        groups.add(failedGroup);
+        Group savedFailedGroup = groupDAO.saveAndFlush(failedGroup);
+        groups.add(savedFailedGroup);
 
         Student student = new Student();
         student.setEmail("test_email");
@@ -66,7 +66,7 @@ class StudentDAOTest {
 
         Student failStudent = new Student();
         failStudent.setEmail("failed_email");
-        failStudent.setGroup(failedGroup);
+        failStudent.setGroup(savedFailedGroup);
 
         students.add(studentDAO.saveAndFlush(failStudent));
     }
