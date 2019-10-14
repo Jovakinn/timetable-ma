@@ -121,7 +121,7 @@ class LessonDAOTest {
         LocalDateTime from = LocalDateTime.of(2019, 10, 3, 0, 0, 0);
         LocalDateTime to = LocalDateTime.of(2019, 10, 3, 23, 59, 59);
 
-        List<Lesson> testObject = lessonDAO.findBySpecializationAndAndStartTimeAfterAndStartTimeBefore(specializations.get(0), from, to);
+        List<Lesson> testObject = lessonDAO.findBySpecializationAndStartTimeAfterAndStartTimeBefore(specializations.get(0), from, to);
 
         assertNotNull(testObject);
         assertEquals(1, testObject.size());
@@ -133,7 +133,7 @@ class LessonDAOTest {
         LocalDateTime from = LocalDateTime.of(2019, 10, 3, 0, 0, 0);
         LocalDateTime to = LocalDateTime.of(2019, 10, 3, 23, 59, 59);
 
-        List<Lesson> testObject = lessonDAO.findByTeacherAndAndStartTimeAfterAndStartTimeBefore(teachers.get(0), from, to);
+        List<Lesson> testObject = lessonDAO.findByTeacherAndStartTimeAfterAndStartTimeBefore(teachers.get(0), from, to);
 
         assertNotNull(testObject);
         assertEquals(1, testObject.size());
@@ -145,19 +145,19 @@ class LessonDAOTest {
         LocalDateTime from = LocalDateTime.of(2019, 10, 1, 0, 0, 0);
         LocalDateTime to = LocalDateTime.of(2019, 10, 1, 23, 59, 59);
 
-        List<Lesson> testObject = lessonDAO.findByAndStartTimeAfterAndStartTimeBefore(from, to);
+        List<Lesson> testObject = lessonDAO.findByStartTimeAfterAndStartTimeBefore(from, to);
         assertNotNull(testObject);
         assertEquals(1, testObject.size());
 
         to = LocalDateTime.of(2019, 10, 4, 23, 59, 59);
 
-        testObject = lessonDAO.findByAndStartTimeAfterAndStartTimeBefore(from, to);
+        testObject = lessonDAO.findByStartTimeAfterAndStartTimeBefore(from, to);
         assertNotNull(testObject);
         assertEquals(2, testObject.size());
 
         to = LocalDateTime.of(2019, 10, 31, 23, 59, 59);
 
-        testObject = lessonDAO.findByAndStartTimeAfterAndStartTimeBefore(from, to);
+        testObject = lessonDAO.findByStartTimeAfterAndStartTimeBefore(from, to);
         assertNotNull(testObject);
         assertEquals(3, testObject.size());
     }

@@ -12,18 +12,21 @@ public interface LessonDAO extends JpaRepository<Lesson, Integer> {
 
     List<Lesson> findByGroupAndStartTimeAfterAndStartTimeBefore(Group group, LocalDateTime from, LocalDateTime to);
 
-    List<Lesson> findBySpecializationAndAndStartTimeAfterAndStartTimeBefore(Specialization specialization, LocalDateTime from, LocalDateTime to);
+    List<Lesson> findBySpecializationAndStartTimeAfterAndStartTimeBefore(Specialization specialization,
+                                                                            LocalDateTime from, LocalDateTime to);
 
-    List<Lesson> findByTeacherAndAndStartTimeAfterAndStartTimeBefore(Teacher teacher, LocalDateTime from, LocalDateTime to);
+    List<Lesson> findByTeacherAndStartTimeAfterAndStartTimeBefore(Teacher teacher, LocalDateTime from,
+                                                                     LocalDateTime to);
 
-    List<Lesson> findByAndStartTimeAfterAndStartTimeBefore(LocalDateTime from, LocalDateTime to);
+    List<Lesson> findByStartTimeAfterAndStartTimeBefore(LocalDateTime from, LocalDateTime to);
 
-    @Query(nativeQuery = true, value =
-            "SELECT l.* FROM lessons l " +
-                    "JOIN students s ON l.group_id=s.group_id " +
-                    "WHERE l.start_time >= :time1 " +
-                    "AND l.start_time <= :time2 " +
-                    "AND s.email = :email"
-    )
-    List<Lesson> findNotLectureByStudentAndStartTimeAfterAndStartTimeBefore(String email, LocalDateTime time1, LocalDateTime time2);
+//    @Query(nativeQuery = true, value =
+//            "SELECT l.* FROM lessons l " +
+//                    "JOIN students s ON l.group_id=s.group_id " +
+//                    "WHERE l.start_time >= :time1 " +
+//                    "AND l.start_time <= :time2 " +
+//                    "AND s.email = :email"
+//    )
+    List<Lesson> findNotLectureByStudentAndStartTimeAfterAndStartTimeBefore(String email, LocalDateTime time1,
+                                                                            LocalDateTime time2);
 }
