@@ -6,7 +6,6 @@ import com.mainacad.entity.Lesson;
 import com.mainacad.entity.Specialization;
 import com.mainacad.entity.Teacher;
 import com.mainacad.service.LessonService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -15,8 +14,11 @@ import java.util.List;
 @Service
 public class LessonServiceImpl implements LessonService {
 
-    @Autowired
-    LessonDAO lessonDAO;
+    private final LessonDAO lessonDAO;
+
+    public LessonServiceImpl(LessonDAO lessonDAO) {
+        this.lessonDAO = lessonDAO;
+    }
 
     @Override
     public List<Lesson> findByGroupAndStartTimeAfterAndStartTimeBefore(Group group, LocalDateTime from, LocalDateTime to) {

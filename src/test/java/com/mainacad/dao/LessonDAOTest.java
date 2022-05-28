@@ -83,11 +83,11 @@ class LessonDAOTest {
     @AfterEach
     void deletePreData(){
 
-        lessons.stream().forEach(it -> lessonDAO.delete(it));
-        teachers.stream().forEach(it -> teacherDAO.delete(it));
-        students.stream().forEach(it -> studentDAO.delete(it));
-        groups.stream().forEach(it -> groupDAO.delete(it));
-        specializations.stream().forEach(it -> specializationDAO.delete(it));
+        lessons.forEach(it -> lessonDAO.delete(it));
+        teachers.forEach(it -> teacherDAO.delete(it));
+        students.forEach(it -> studentDAO.delete(it));
+        groups.forEach(it -> groupDAO.delete(it));
+        specializations.forEach(it -> specializationDAO.delete(it));
 
     }
 

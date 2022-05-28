@@ -13,8 +13,11 @@ import java.util.List;
 @Service
 public class TeacherServiceImpl implements TeacherService {
 
-    @Autowired
-    TeacherDAO teacherDAO;
+    private final TeacherDAO teacherDAO;
+
+    public TeacherServiceImpl(TeacherDAO teacherDAO) {
+        this.teacherDAO = teacherDAO;
+    }
 
     @Override
     public List<Teacher> findByGroupAndStartTimeAfterAndStartTimeBefore(Group group, LocalDateTime from, LocalDateTime to) {
